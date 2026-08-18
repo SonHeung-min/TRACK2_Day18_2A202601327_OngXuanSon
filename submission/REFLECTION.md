@@ -1,0 +1,5 @@
+Our team is most at risk of treating the lakehouse as a dumping ground instead of a governed data product. Bronze is easy to populate quickly, but without table ownership, schema contracts, retention rules, and validation checks, Silver and Gold can become inconsistent or untrustworthy.
+
+This lab made that risk concrete. The important lessons were not just writing Delta or Iceberg files, but enforcing schema, reading transaction history, measuring pruning, running maintenance jobs, cleaning orphans, and preserving provenance for agent and training data. NB6 and NB7 especially showed how hidden operational debt appears: vacuum can miss uncommitted orphan files, snapshot expiry does not automatically remove all storage cost, and external indexes can keep returning deleted data.
+
+For our future projects, we should define owners, expected schemas, lifecycle policy, catalog usage, and quality checks before scaling ingestion. Otherwise the lakehouse may look cheap and flexible at first, but debugging stale indexes, duplicated records, orphan files, and untraceable training data will cost far more later.
